@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login Page</title>
+    <link rel="stylesheet" href="assets/style.css">
+
+  </head>
+  <body>
+    <div class="Container">
+      <h1><b>Login Page</b></h1>
+
+      <form action="auth" method="POST">
+        <div class="Image">
+          <img src="assets/login.jpg" alt="Login" class="login">
+        </div>
+        <div class="container">
+          <label for="Username"><b>User Name</b></label><br>
+          <input type="text" id="Username" name="Username" placeholder="Username"><br>
+
+          <label for="Password"><b>Password</b></label><br>
+          <input type="password" id="Password" name="Password" placeholder="Password"><br>
+         
+          <button type="submit" style="float:left;" class="loginBtn"><b>LOGIN</b></button><br>
+         
+          <br>
+          <br>
+        </div>
+
+        <div class="bottom-container">
+          <button type="reset" class="cancelBtn"><b>Cancel</b></button>
+          <span class="forgetPW">Forgot <a href="#">password?</a></span>
+        </div>
+        
+        <div class = "images">
+          <p style="text-align: center;"><b>QUICK ACCESS WITH</b></p>
+          <div class = "image-line">
+            <a href="https://myaccount.google.com/"><img src = "assets/google.jpg" alt="google" class="googleImg"></a>
+          </div>
+
+          <div class = "image-line">
+            <a href="https://www.facebook.com/"><img src = "assets/facebook.png" alt="facebook" class="facebookImg"></a>
+          </div>
+
+          <div class = "image-line">
+            <a href="https://twitter.com/login/"><img src = "assets/twitter.png" alt="twitter" class="twitterImg"></a>
+          </div>
+
+          <div class = "image-line">
+            <a href="https://www.instagram.com/"><img src = "assets/instagram.png" alt="instagram" class="instagramImg"></a>
+          </div>
+
+        </div>
+
+        <a href="/">
+          <img src="assets/back.png" alt="Back button" class="back" style="width:100px; height:50px;">
+        </a>
+
+      </form>
+    </div>
+  </body>
+</html>

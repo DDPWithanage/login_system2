@@ -1,0 +1,123 @@
+body{
+  font-family: "Calibri", serif;
+  width: 50%;
+  height: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 20px;
+}
+
+form{
+  border: 3px solid gray;
+  box-sizing: border-box;
+  padding: 0 20px 20px 20px;
+}
+
+input[type=text], input[type=password]{
+  width: 100%;
+  padding: 12px 20px ;
+  margin: 0 0 20px 0;
+  display: inline-block;
+  border: 1px solid gray;
+  box-sizing: border-box;
+}
+
+h1{
+  text-align: center;
+  font-size: 40px;
+  font-family: "Calibri", serif;
+}
+
+button{
+  background-color: #56b051;
+  color: white;
+  font-size: 24px;
+  padding: 14px 5px 14px 0;
+  margin: 8px 0 0 0;
+  cursor: pointer;
+  width: 100%;
+  font-family: "Calibri", serif;
+}
+
+.Image{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height: 100%;
+}
+
+img.login{
+  width: 60%;
+  height: 100%;
+  padding: 0 5px 0 70px;
+
+}
+
+.icon{
+  padding: 5px 5px 0 600px
+}
+img.back{
+  padding: 5px 5px 0 610px
+}
+
+.container{
+  padding: 10px;
+}
+
+.cancelBtn{
+  background-color: #e62112;
+  width: auto;
+  height: auto;
+  padding: 8px 8px 8px 8px;
+  margin: 20px 0 0 8px;
+  font-size: 20px;
+  font-family: "Calibri", serif;
+}
+
+span.forgetPW{
+  text-align: right;
+  padding: 8px 8px 8px 450px;
+  font-size: 20px;
+}
+
+.bottom-container{
+  background-color: #949c94;
+  padding: 8px 2px 8px 2px;
+  margin: 8px 8px 0 8px;
+  height: 90px;
+  text-align: center;
+}
+
+.image-line{
+  display: inline-block;
+  max-width: 20%;
+  max-height: 20%;
+  object-fit: cover;
+}
+
+.googleImg{
+  height: 60%;
+  width: 60%;
+  margin: 0 0 8px 0;
+}
+
+.facebookImg{
+  height: 42%;
+  width: 42%;
+  margin: 0 0 20px 0;
+}
+
+.twitterImg{
+  height: 82px;
+  width: 82px;
+  margin: 0 0 10px 0;
+}
+
+.instagramImg{
+  height: 100px;
+  width: 140px;
+  margin: 10px 0 0 40px;
+}
+

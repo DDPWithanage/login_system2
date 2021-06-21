@@ -2,7 +2,9 @@ const mysql = require("mysql");
 const express = require("express");
 const bodyParser = require("body-parser");
 const encoder = bodyParser.urlencoded();
+const bcrypt = require("bcrypt");
 
+const saltRounds = 10;
 const app = express();
 app.use("/assets", express.static("assets"));
 
@@ -10,7 +12,7 @@ const connection = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "1234",
-    database: "login_system"
+    database: "hash"
 });
 
 //Connect to the database
@@ -28,54 +30,62 @@ app.get("/index", function(req, res){
 })
 
 
-app.post("/add",encoder, function(req, res){
-    var Username = req.body.Username;
-    console.log(Username);
-    var Password = req.body.Password;
-    console.log(Password);
+let globalPassword="";
 
+app.post("/add",encoder, async function(req, res){
     try{
+        var Username = req.body.Username;
+        console.log(Username);
+        var Password = req.body.Password;
+        console.log(Password);
+
+        const hashPassword = await bcrypt.hash(Password, saltRounds);
+        console.log(hashPassword);
+
         //save data to mysql database
-         connection.query("INSERT INTO login (user_name, user_password) VALUES (?, ?)", [Username,Password], function(error, results, fields){
+        connection.query("INSERT INTO login (user_name, user_password) VALUES (?, ?)", [Username,hashPassword], function(error, results, fields){
             console.log("1 record inserted");
             res.redirect("/index");
-             let alert = require('alert');
-             alert("Account Created")
+            let alert = require('alert');
+            alert("Account Created")
 
-         })
+        })
 
-        }catch(error){
-            console.log(error);
-        }
+        globalPassword = hashPassword;
+        res.render("/auth", {Password: hashPassword})
 
-
+    }catch(error){
+        console.log(error);
+    }
 })
 
 //Authenticate application with database
-app.post("/auth",encoder, function(req,res){
-    var Username = req.body.Username;
-    console.log(Username);
-    var Password = req.body.Password;
-    console.log(Password);
-    
+app.post("/auth",encoder,async function(req,res){
+    try {
+        var Username = req.body.Username;
+        console.log(Username);
+
+        console.log(globalPassword);
+
         //Select data from mysql database
-         connection.query("select * from login where user_name = ? and user_password = ?", [Username,Password], function(error, results, fields){
-            if (results.length > 0){
+        connection.query("select * from login where user_name = ? and user_password = ?", [Username, globalPassword], function (error, results, fields) {
+            if (results.length > 0) {
                 res.redirect("/welcome");
                 console.log(results);
                 let alert = require('alert');
                 alert("Successfully login to the system")
 
-            }else{
+            } else {
                 res.redirect("/index");
                 console.log(results);
 
-            
             }
-                res.end();
-            })
-        
-   
+            res.end();
+        })
+    }catch (error){
+        console.log(error);
+    }
+
 })
 
 //Success login
@@ -84,4 +94,4 @@ app.get("/welcome", function(req, res){
 })
 
 //set app port
-app.listen(4700);
+app.listen(4500);
